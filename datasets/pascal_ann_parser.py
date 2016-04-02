@@ -142,8 +142,6 @@ if __name__ == '__main__':
     (opts, args) = parser.parse_args()
     loader = BatchLoader(opts)
     labelfile = "PascalLabel_" + opts.split + '.pickle'
-    # labeldict = loader.load_allimages()
-    # with open(labelfile, 'w') as f:
-    #      pickle.dump(labeldict,f)
-    with open(labelfile, 'r') as f:
-         labeldict = pickle.load(f)
+    labeldict = loader.load_allimages()
+    with open(labelfile, 'w') as f:
+         pickle.dump(labeldict,f)
