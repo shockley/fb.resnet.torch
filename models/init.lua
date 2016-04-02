@@ -100,6 +100,7 @@ function M.setup(opt, checkpoint)
 
       model = dpt:cuda()
    end
+   --changed
    local criterion = {}
    if opt.dataset == 'pascal' then
       criterion = nn.MultiLabelSoftMarginCriterion():cuda()
@@ -107,6 +108,7 @@ function M.setup(opt, checkpoint)
    else
       criterion = nn.CrossEntropyCriterion():cuda()
    end
+
    return model, criterion
 end
 

@@ -98,7 +98,9 @@ local function createModel(opt)
    end
 
    local model = nn.Sequential()
+   --changed
    if opt.dataset == 'imagenet' or opt.dataset == 'pascal' then
+
       -- Configurations for ResNet:
       --  num. residual blocks, num features, residual block function
       local cfg = {
@@ -125,6 +127,7 @@ local function createModel(opt)
       model:add(layer(block, 512, def[4], 2))
       model:add(Avg(7, 7, 1, 1))
       model:add(nn.View(nFeatures):setNumInputDims(3))
+      --changed
       --model:add(nn.Linear(nFeatures, 1000))
       model:add(nn.Linear(nFeatures, opt.nClasses))
    elseif opt.dataset == 'cifar10' then

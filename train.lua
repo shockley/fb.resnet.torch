@@ -48,14 +48,14 @@ function Trainer:train(epoch, dataloader)
    -- set the batch norm to training mode
    self.model:training()
 
+
    for n, sample in dataloader:run() do
       local dataTime = dataTimer:time().real
-      print(dataTime)
       -- Copy input and target to the GPU
       self:copyInputs(sample)
 
       local output = self.model:forward(self.input):float()
-      print(output:size())
+
       local loss = self.criterion:forward(self.model.output, self.target)
 
       self.model:zeroGradParameters()
@@ -64,6 +64,7 @@ function Trainer:train(epoch, dataloader)
       self.model:backward(self.input, self.criterion.gradInput)
 
       optim.sgd(feval, self.params, self.optimState)
+
 
       --changed
       --local top1, top5 = self:computeScore(output, sample.target, 1)
@@ -112,6 +113,7 @@ function Trainer:test(epoch, dataloader)
       local top1 = 0
       local top5 = 0
       --change end
+
       top1Sum = top1Sum + top1
       top5Sum = top5Sum + top5
       N = N + 1

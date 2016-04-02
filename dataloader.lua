@@ -43,9 +43,12 @@ function DataLoader:__init(dataset, opt, split)
    self.threads = threads
    self.__size = sizes[1][1]
    self.batchSize = math.floor(opt.batchSize / self.nCrops)
+   --<<<<<<< HEAD
    --added
    self.nClasses = opt.nClasses
    self.dataset = opt.dataset
+   --=======
+   -->>>>>>> e8fb31378fd8dc188836cf1a7c62b609eb4fd50a
 end
 
 function DataLoader:size()
@@ -86,7 +89,6 @@ function DataLoader:run()
                   batch[i]:copy(input)
                   
                   target[i] = sample.target
-
                end
                collectgarbage()
                return {

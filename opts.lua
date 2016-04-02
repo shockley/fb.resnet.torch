@@ -15,7 +15,6 @@ function M.parse(arg)
    cmd:text()
    cmd:text('Options:')
     ------------ General options --------------------
-
    cmd:option('-data',       '../data/VOC2012/JPEGImages/',         'Path to dataset')
    cmd:option('-dataset',    'pascal', 'Options: imagenet | cifar10 | pascal')
    cmd:option('-manualSeed', 2,          'Manually set RNG seed')
@@ -38,7 +37,7 @@ function M.parse(arg)
    cmd:option('-weightDecay',     1e-4,  'weight decay')
    ---------- Model options ----------------------------------
    cmd:option('-netType',      'resnet', 'Options: resnet')
-   cmd:option('-depth',        18,       'ResNet depth: for imagenet is 18, 34, 50, 101 ..., for cifar10 is 20 32 44 56 110 1202', 'number')
+   cmd:option('-depth',        34,       'ResNet depth: for imagenet is 18, 34, 50, 101 ..., for cifar10 is 20 32 44 56 110 1202', 'number')
    cmd:option('-shortcutType', '',       'Options: A | B | C')
    cmd:option('-retrain',      'none',   'Path to model to retrain with')
    cmd:option('-optimState',   'none',   'Path to an optimState to reload from')
